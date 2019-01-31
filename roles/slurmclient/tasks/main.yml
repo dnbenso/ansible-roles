@@ -1,0 +1,11 @@
+---
+# file roles/slurmclient/tasks/main.yml
+- name: Install slurm-client package on "{{ hostname }}"
+  become: true
+  apt:
+          name: slurm-client
+- name: Create slurm.conf file
+  become: true
+  template:
+          src: slurm.conf.tpl
+          dest: /etc/slurm-llnl/slurm.conf

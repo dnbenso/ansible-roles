@@ -1,0 +1,25 @@
+---
+# file roles/postfix_client/tasks/configure_postfix.yml
+- name: Copy main.cf file to "{{ hostname }}"
+  become: true
+  template:
+          src: client_main.cf.tpl
+          dest: /etc/postfix/main.cf
+          mode: 0644
+  notify: Reload postfix
+- name: Validate certificates
+  become: true
+  copy:
+          src: /etc/ssl/certs/thawte_Primary_Root_CA.pem
+          dest: /etc/postfix/cacert.pem
+          mode: 0644
+          remote_src: true
+  notify: Reload postfix
+- name: Install aliases file
+  become: true
+  copy:
+          src: aliases
+          dest: /etc/aliases
+          mode: 0644
+  notify: New aliases
+

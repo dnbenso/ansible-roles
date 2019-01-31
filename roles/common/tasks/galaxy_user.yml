@@ -1,0 +1,10 @@
+---
+# file roles/services/tasks/galaxy_user.yml
+- name: Create galaxy login user on "{{ hostname }}"
+  become: true
+  user:
+    name:       galaxy
+    uid:        1001
+    shell:      /bin/bash
+    home:       /srv/galaxy
+    groups:     users

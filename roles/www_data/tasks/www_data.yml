@@ -1,0 +1,8 @@
+---
+# file roles/www_data/tasks/www_data.yml
+- name: Copy apache site config data.conf to "{{ hostname }}"
+  become: true
+  template:
+          src: data.conf.tpl
+          dest: /etc/apache2/sites-available/data.conf
+  notify: Enable site data in apache

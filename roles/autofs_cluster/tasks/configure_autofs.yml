@@ -1,0 +1,18 @@
+---
+# file roles/autofs_cluster/tasks/configure_autofs.yml
+- name: Copy automaster to "{{ hostname }}"
+  become: true
+  copy:
+          src: "{{ item }}.cluster"
+          dest: "/etc/{{ item }}"
+          mode: 0644
+          owner: root
+          group: root
+  loop: "{{ autofs_files }}"
+  notify: Restart autofs
+- name: Copy auto.services file to "{{ hostname }}"
+  become: true
+  template:
+          src: auto.services.tpl
+          dest: /etc/auto.services
+  notify: Restart autofs

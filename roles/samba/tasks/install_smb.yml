@@ -1,0 +1,7 @@
+---
+# file roles/samba/tasks/install_smb.yml
+- name: Install samba package on "{{ hostname }}"
+  become: true
+  apt:
+          name: samba
+

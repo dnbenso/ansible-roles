@@ -1,0 +1,4 @@
+---
+# file roles/samba/tasks/main.yml
+- include: install_smb.yml
+- include: configure_smb.yml

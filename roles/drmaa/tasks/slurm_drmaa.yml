@@ -1,0 +1,25 @@
+---
+# file roles/drmaa/tasks/slurm_drmaa.yml
+- name: Install package stow on "{{ hostname }}"
+  become: true
+  apt:
+          name: stow
+- name: Create stow directory on "{{ hostname }}"
+  become: true
+  file:
+          dest: /usr/local/stow
+          state: directory
+          owner: root
+          group: root
+          mode: 0755
+- name: Unarchive slurm libraries on "{{ hostname }}"
+  become: true
+  unarchive:
+          src: slurm-drmaa-1.0.7.tar.gz
+          dest: /usr/local/stow
+- name: Stow the slurm drmaa libraries on "{{ hostname }}"
+  become: true
+  command: stow -v slurm-drmaa-1.0.7
+  args:
+          chdir: /usr/local/stow
+          creates: /usr/local/lib/libdrmaa.a

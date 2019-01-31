@@ -1,0 +1,11 @@
+---
+# file roles/wiki/tasks/wiki_files.yml
+- name: Unarchive wiki site
+  become: true
+  unarchive:
+          src: wiki.tar.gz
+          dest: /var/www
+          owner: root
+          group: root
+          creates: /var/www/wiki/LocalSettings.php
+  notify: Install local settings

@@ -1,0 +1,3 @@
+---
+# file roles/apache2/tasks/main.yml
+- include: apache2_php7_2.yml

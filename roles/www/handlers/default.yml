@@ -1,0 +1,4 @@
+---
+# file roles/www/handlers/default.yml
+- name: Enable default site
+  shell: "a2ensite 000-default"

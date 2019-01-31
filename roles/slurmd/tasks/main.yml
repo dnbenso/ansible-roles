@@ -1,0 +1,4 @@
+---
+# file roles/slurmd/tasks/main.yml
+- include: slurmd.yml
+- include: cgroups.yml

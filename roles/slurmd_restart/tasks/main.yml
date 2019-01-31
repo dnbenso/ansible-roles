@@ -1,0 +1,7 @@
+---
+# file roles/slurmd_restart/tasks/main.yml
+- name: Restarting slurmd on "{{ hostname }}"
+  become: true
+  systemd:
+          name: slurmd
+          state: restarted

@@ -1,0 +1,7 @@
+---
+# file roles/autofs_services/handlers/main.yml
+- name: Restart autofs
+  become: true
+  systemd:
+          name: autofs
+          state: restarted

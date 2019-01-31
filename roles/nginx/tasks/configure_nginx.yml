@@ -1,0 +1,48 @@
+---
+# file roles/nginx/tasks/configure_nginx.yml
+- name: Setup nginx conf on "{{ hostname }}"
+  become: true
+  copy:
+          src: nginx.conf
+          dest: /etc/nginx/nginx.conf
+          owner: root
+          group: root
+          mode: 0644
+  notify: Restart nginx
+- name: Setup default.server
+  become: true
+  template:
+          src: default.server.tpl
+          dest: /etc/nginx/sites-enabled/default.server
+  notify: Restart nginx
+- name: Setup galaxy.locations
+  become: true
+  copy:
+          src: galaxy.locations
+          dest: /etc/nginx/sites-enabled/galaxy.locations
+          owner: root
+          group: root
+          mode: 0644
+  notify: Restart nginx
+- name: Setup reports.locations
+  become: true
+  copy:
+          src: reports.locations
+          dest: /etc/nginx/sites-enabled/reports.locations
+          owner: root
+          group: root
+          mode: 0644
+  notify: Restart nginx
+- name: Disable the default site
+  become: true
+  file:
+          path: /etc/nginx/sites-enabled/default
+          state: absent
+  notify: Restart nginx
+- name: Set up Duffie Helman key
+  become: true
+  copy:
+          src: dhparam.pem
+          dest: /etc/ssl/certs/dhparam.pem
+          mode: 0644
+  notify: Restart nginx

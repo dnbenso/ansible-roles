@@ -1,0 +1,8 @@
+---
+# file roles/samba/tasks/configure_smb.yml
+- name: Configure smb on "{{ hostname }}"
+  become: true
+  copy:
+          src: smb.conf
+          dest: /etc/samba/smb.conf
+  notify: Restart smbd

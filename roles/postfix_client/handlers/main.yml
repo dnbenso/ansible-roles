@@ -1,0 +1,10 @@
+---
+# file roles/postfix_client/handlers/main.yml
+- name: Reload postfix
+  become: true
+  systemd:
+          name: postfix
+          state: restarted
+- name: New aliases
+  become: true
+  command: newaliases

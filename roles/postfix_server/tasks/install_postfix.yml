@@ -1,0 +1,14 @@
+---
+# file roles/postfix_server/tasks/install_postfix.yml
+- name: Install postfix packages on "{{ hostname }}"
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:
+          packages:
+                  - postfix
+                  - mailutils
+                  - libsasl2-2
+                  - ca-certificates
+                  - libsasl2-modules
+

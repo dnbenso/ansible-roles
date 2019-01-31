@@ -1,0 +1,54 @@
+- name: Install apache2 and php7.2 packages
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:
+          packages:
+                  - apache2
+                  - pwauth
+                  - imagemagick-6.q16
+                  - libapache2-mod-authnz-external
+                  - php7.2
+                  - libapache2-mod-php7.2
+                  - php7.2-common
+                  - php7.2-mbstring
+                  - php7.2-xmlrpc
+                  - php7.2-soap
+                  - php7.2-gd
+                  - php7.2-xml
+                  - php7.2-intl
+                  - php7.2-mysql
+                  - php7.2-cli
+                  - php7.2-zip
+                  - php7.2-curl
+                  - php-pear
+                  - php-dev
+                  - php-apcu
+                  - libmcrypt-dev
+  notify: Install PHP Mcrypt
+- name: Configure php.ini
+  become: true
+  copy:
+          src: php.ini
+          dest: /etc/php/7.2/apache2/php.ini
+          owner: root
+          group: root
+          mode: 0644
+          backup: yes
+  notify: Restart apache2
+- name: Load apache2 php7.2 module
+  become: true
+  apache2_module:
+          name: php7.2
+          state: present
+- name: Load SSL module
+  become: true
+  apache2_module:
+          name: ssl
+          state: present
+- name: Load rewrite module
+  become: true
+  apache2_module:
+          name: rewrite
+          state: present
+

@@ -1,0 +1,7 @@
+---
+# file roles/www_data/handlers/www_data.yml
+- name: Enable site data in apache
+  become: true
+  shell: "a2ensite data"
+  args:
+          creates: /etc/apache2/sites-enabled/data.conf

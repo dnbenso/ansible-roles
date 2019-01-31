@@ -1,0 +1,5 @@
+---
+# file roles/wiki/handlers/main.yml
+- include: wiki_files.yml
+- include: wiki_mysql.yml
+- include: wiki_apache.yml

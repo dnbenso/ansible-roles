@@ -1,0 +1,5 @@
+---
+# file roles/update_ubuntu/tasks/main.yml
+- include: os_patches.yml
+- include: timezone.yml
+- include: hosts_file.yml

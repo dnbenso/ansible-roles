@@ -1,0 +1,5 @@
+---
+# file roles/postfix_server/tasks/main.yml
+- include: install_postfix.yml
+- include: configure_postfix.yml
+- include: iptables.yml

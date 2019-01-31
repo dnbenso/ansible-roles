@@ -1,0 +1,10 @@
+---
+# file roles/www_data/tasks/www_files.yml
+- name: Unarchive www_data site
+  become: true
+  unarchive:
+          src: var_www.tar.gz
+          dest: /var/www
+          owner: root
+          group: root
+          creates: /var/www/html/images/vim_created_blue.gif

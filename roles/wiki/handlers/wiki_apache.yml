@@ -1,0 +1,7 @@
+---
+# file roles/wiki/handlers/wiki.yml
+- name: Enable site wiki in apache
+  become: true
+  shell: "a2ensite wiki"
+  args:
+          creates: /etc/apache2/sites-enabled/wiki.conf

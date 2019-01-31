@@ -1,0 +1,9 @@
+---
+# file roles/www/tasks/default.yml
+- name: Copy apache default.conf file to "{{ hostname }}"
+  become: true
+  template:
+          src: 000-default.conf.tpl
+          dest: /etc/apache2/sites-available/000-default.conf
+  notify: Enable default site
+

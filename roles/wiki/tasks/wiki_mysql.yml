@@ -1,0 +1,29 @@
+---
+# file roles/wiki/tasks/wiki_mysql.yml
+- name: Grant access to empty wiki to wiki user
+  mysql_user:
+          name: "{{ mysql_wiki_user }}"
+          password: "{{ mysql_wiki_password }}"
+          priv: "{{ mysql_wiki_db }}.*:SELECT,INSERT,UPDATE,DELETE,INDEX,ALTER,CREATE,DROP,CREATE TEMPORARY TABLES"
+          append_privs: true
+          host: localhost
+          login_user: root
+          login_password: "{{ mysql_root_password }}"
+- name: Create new wiki db
+  mysql_db:
+          name: "{{ mysql_wiki_db }}"
+          login_user: root
+          login_password: "{{ mysql_root_password }}"
+          state: present
+- name: Get database dump to server
+  become: true
+  copy:
+          src: gdd_wiki.sql
+          dest: /root/gdd_wiki.sql
+          owner: root
+          group: root
+          mode: 0644
+  notify:
+          - Drop database gdd_wiki
+          - Create database gdd_wiki
+          - Restore database gdd_wiki

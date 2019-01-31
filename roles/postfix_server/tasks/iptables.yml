@@ -1,0 +1,45 @@
+---
+# file roles/postfix_server/tasks/iptables.yml
+- name: IPTABLES allow SSH to "{{ hostmame }}"
+  become: true
+  iptables:
+          chain: INPUT
+          protocol: tcp
+          destination_port: 22
+          ctstate: NEW
+          syn: match
+          jump: ACCEPT
+          comment: Accept new SSH connections.
+- name: IPTABLES allow SMTP to "{{ hostname }} from {{ services_ip }}"
+  become: true
+  iptables:
+          chain: INPUT
+          protocol: tcp
+          destination_port: 25
+          ctstate: NEW
+          syn: match
+          source: "{{ services_ip }}"
+          jump: ACCEPT
+          comment: Accept smtp from services
+- name: IPTABLES allow SMTP to "{{ hostname }} from {{ login_ip }}"
+  become: true
+  iptables:
+          chain: INPUT
+          protocol: tcp
+          destination_port: 25
+          ctstate: NEW
+          syn: match
+          source: "{{ login_ip }}"
+          jump: ACCEPT
+          comment: Accept smtp from login
+- name: IPTABLES allow related and established connections to "{{ hostname }}"
+  become: true
+  iptables:
+          chain: INPUT
+          ctstate: ESTABLISHED,RELATED
+          jump: ACCEPT
+- name: IPTABLES set policy for the INPUT chain to DROP on "{{ hostname }}"
+  become: true
+  iptables:
+          chain: INPUT
+          policy: DROP

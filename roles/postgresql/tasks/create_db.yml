@@ -1,0 +1,60 @@
+---
+# file roles/postgresql/tasks/create_db.yml
+- name: Create galaxy database directory
+  become: true
+  file:
+          path: /galaxydb
+          owner: postgres
+          group: postgres
+          mode: 0700
+          state: directory
+- name: Create galaxy database
+  become: true
+  become_user: postgres
+  vars:
+          ansible_ssh_pipelining: true
+  shell: /usr/lib/postgresql/10/bin/initdb -D /galaxydb
+  args:
+          creates: /galaxydb/PG_VERSION
+  notify:
+          - Make postgres listen
+          - Allow remote postgres connection
+- meta: flush_handlers
+- name: Start galaxy database
+  become: true
+  become_user: postgres
+  vars:
+          ansible_ssh_pipelining: true
+  shell: /usr/lib/postgresql/10/bin/pg_ctl -D /galaxydb -o "-p {{ pg_port }} -c config_file=/galaxydb/postgresql.conf" -l /var/log/postgresql/galaxydb.log start
+  args:
+          creates: /galaxydb/postmaster.pid
+  notify: Create galaxy database
+- name: Add galaxy postgres user
+  become: true
+  become_user: postgres
+  vars:
+          ansible_ssh_pipelining: true
+  postgresql_user:
+          name: galaxy
+          port: 5930
+          role_attr_flags: "LOGIN,CREATEDB"
+          password: "{{ postgresdb_pass }}"
+  notify:
+          - Copy galaxy database to server
+          - Restore galaxy database
+          - Remove database dump from server
+- name: Create ubuntu bin directory
+  become: true
+  file:
+          path: /home/ubuntu/bin
+          state: directory
+          owner: ubuntu
+          group: ubuntu
+          mode: 0755
+- name: Copy postgres startup script to server
+  copy:
+          src: postgres.sh
+          dest: /home/ubuntu/bin
+          owner: ubuntu
+          group: ubuntu
+          mode: 0755

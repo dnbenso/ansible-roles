@@ -1,0 +1,10 @@
+---
+# file roles/slurm_config_update/tasks/slurm_config.yml
+- name: Update slurm.conf file on "{{ hostname }}"
+  become: true
+  template:
+          src: slurm.conf.tpl
+          dest: /etc/slurm-llnl/slurm.conf
+          mode: 0644
+          owner: slurm
+          group: slurm

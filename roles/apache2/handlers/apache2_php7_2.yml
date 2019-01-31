@@ -1,0 +1,10 @@
+---
+# file roles/apache2/handlers/apache2_php7_2.yml
+- name: Install PHP Mcrypt
+  become: true
+  shell: "pecl update-channels && printf \"\n\" | pecl install mcrypt-1.0.1"
+- name: Restart apache2
+  become: true
+  systemd:
+          name: apache2
+          state: restarted

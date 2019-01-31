@@ -1,0 +1,97 @@
+---
+# file roles/bio_software/tasks/packages.yml
+- name: Install dev packages on "{{ hostname }}"
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:
+          packages:
+                  - build-essential
+                  - flex
+                  - bison
+                  - autotools-dev
+                  - autoconf
+                  - automake
+                  - libtool
+                  - pkg-config
+                  - python-future
+- name: Install biology packages on "{{ hostname }}"
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:   
+          packages:
+                  - bioperl
+                  - emboss
+                  - ncbi-tools-bin
+                  - python-cogent
+                  - science-biology
+                  - samtools
+                  - amap-align
+                  - blast2
+                  - dialign
+                  - exonerate
+                  - hmmer
+                  - infernal
+                  - kalign
+                  - libbio-asn1-entrezgene-perl
+                  - mafft
+                  - maq
+                  - muscle
+                  - probalign
+                  - probcons
+                  - t-coffee
+                  - tm-align
+                  - wise
+- name: Install biology R packages on "{{ hostname }}"
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:
+          packages:
+                  - r-cran-boot
+                  - r-cran-class
+                  - r-cran-cluster
+                  - r-cran-codetools
+                  - r-cran-foreign
+                  - r-cran-kernsmooth
+                  - r-cran-lattice
+                  - r-cran-mass
+                  - r-cran-matrix
+                  - r-cran-mgcv
+                  - r-cran-nlme
+                  - r-cran-nnet
+                  - r-cran-rpart
+                  - r-cran-spatial
+                  - r-cran-survival
+                  - r-cran-phytools
+                  - r-cran-hdf5
+- name: Install python packages on "{{ hostname }}"
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:
+          packages:
+                  - python-pip
+                  - python3-pip
+                  - python-virtualenv
+                  - python-h5py
+                  - python3-h5py
+                  - python3-html5lib
+- name: Remove broken metaphlan2
+  become: true
+  apt:
+          name: metaphlan2
+          state: absent
+          purge: yes
+- name: Remove apache2
+  become: true
+  apt:
+          name: apache2
+          state: absent
+- name: Remove gbrowse
+  become: true
+  apt:
+          name: gbrowse
+          state: absent
+          purge: yes

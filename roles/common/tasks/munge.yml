@@ -1,0 +1,15 @@
+---
+# file roles/common/tasks/munge.yml
+- name: Install the package "munge"
+  become: true
+  apt:
+          name:  munge
+- name: Deploy the "munge.key"
+  become: true
+  copy:
+          src: munge.key
+          dest: /etc/munge/munge.key
+          mode: 0400
+          owner: munge
+          group: munge
+  notify: Restart munge

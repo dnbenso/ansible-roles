@@ -1,0 +1,13 @@
+---
+# file roles/postgres/tasks/postgresql.yml
+- name: Install postgresql packages
+  become: true
+  apt:
+          name: "{{ packages }}"
+  vars:
+          packages:
+                  - postgresql-10
+                  - postgresql-client-10
+                  - postgresql-contrib
+                  - python-psycopg2
+                  - libpq-dev

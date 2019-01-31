@@ -1,0 +1,8 @@
+---
+# file roles/nfs_servers/tasks/exportfs.yml
+- name: Configure nfs exports on "{{ hostname }}"
+  become: true
+  template:
+          src: exports.tpl
+          dest: /etc/exports
+  notify: Restart nfs-kernel-server

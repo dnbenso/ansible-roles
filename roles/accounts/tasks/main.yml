@@ -1,0 +1,4 @@
+---
+# file roles/accounts/tasks/main.yml
+- include: groups.yml
+- include: users.yml

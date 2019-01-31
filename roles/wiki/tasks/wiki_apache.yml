@@ -1,0 +1,8 @@
+---
+# file roles/wiki/tasks/wiki.yml
+- name: Copy apache wiki config to "{{ hostname }}"
+  become: true
+  template:
+          src: wiki.conf.tpl
+          dest: /etc/apache2/sites-available/wiki.conf
+  notify: Enable site wiki in apache

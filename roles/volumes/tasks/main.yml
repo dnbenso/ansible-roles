@@ -1,0 +1,4 @@
+---
+# file roles/volumes/tasks/main.yml
+- include: mount_points.yml
+- include: mount_volumes.yml

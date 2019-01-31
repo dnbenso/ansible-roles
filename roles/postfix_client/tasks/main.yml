@@ -1,0 +1,4 @@
+---
+# file roles/postfix_client/tasks/main.yml
+- include: install_postfix.yml
+- include: configure_postfix.yml

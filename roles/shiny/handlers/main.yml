@@ -1,0 +1,9 @@
+---
+# file roles/shiny/handlers/main.yml
+- name: Install custom shiny apps
+  become: true
+  unarchive:
+          src: shiny_samples.tar.gz
+          dest: /
+          owner: root
+          group: shiny

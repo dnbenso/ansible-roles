@@ -1,0 +1,4 @@
+---
+# file roles/postgresql/tasks/main.yml
+- include: install_postgresql.yml
+- include: create_db.yml

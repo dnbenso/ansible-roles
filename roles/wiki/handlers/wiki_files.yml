@@ -1,0 +1,7 @@
+---
+# file roles/wiki/handlers/wiki_files.yml
+- name: Install local settings
+  become: true
+  template:
+          src: LocalSettings.php.tpl
+          dest: /var/www/wiki/LocalSettings.php

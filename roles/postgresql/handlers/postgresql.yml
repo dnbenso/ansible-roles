@@ -1,0 +1,47 @@
+---
+# file roles/handlers/postgresql.yml
+- name: Make postgres listen
+  become: true
+  template:
+          src: postgresql.conf.tpl
+          dest: /galaxydb/postgresql.conf
+          mode: 0644
+          owner: postgres
+          group: postgres
+- name: Allow remote postgres connection
+  become: true
+  template:
+          src: pg_hba.conf.tpl
+          dest: /galaxydb/pg_hba.conf
+          mode: 0640
+          owner: postgres
+          group: postgres
+- name: Create galaxy database
+  become: true
+  become_user: postgres
+  vars:
+          ansible_ssh_pipelining: true
+  shell: /usr/lib/postgresql/10/bin/createdb -p "{{ pg_port }}" galaxy
+- name: Copy galaxy database to server
+  become: true
+  copy:
+          src: galaxy.sql
+          dest: /tmp/galaxy.sql
+          owner: galaxy
+          group: galaxy
+          mode: 0644
+- name: Restore galaxy database
+  become: true
+  become_user: postgres
+  vars:
+          ansible_ssh_pipelining: true
+  postgresql_db:
+          name: galaxy
+          port: 5930
+          state: restore
+          target: /tmp/galaxy.sql
+- name: Remove database dump from server
+  become: true
+  file:
+          path: /tmp/galaxy.sql
+          state: absent

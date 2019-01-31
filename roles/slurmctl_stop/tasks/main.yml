@@ -1,0 +1,7 @@
+---
+# file roles/slurmctl_stop/tasks/main.yml
+- name: Stop the slurmctld on "{{ hostname }}"
+  become: true
+  systemd:
+          name: slurmctld
+          state: stopped

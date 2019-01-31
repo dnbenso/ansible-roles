@@ -1,0 +1,7 @@
+---
+# file roles/slurmctl_start/tasks/main.yml
+- name: Start the slurmctld on "{{ hostname }}"
+  become: true
+  systemd:
+          name: slurmctld
+          state: started

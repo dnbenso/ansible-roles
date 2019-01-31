@@ -1,0 +1,153 @@
+---
+# file roles/accounts/tasks/groups.yml
+- name: Add group sf-admin
+  become: true
+  group:
+          name: sf-admin
+          gid: 10000
+- name: Add group devika
+  become: true
+  group:
+          name: devika
+          gid: 1011
+- name: Add group dataonline
+  become: true
+  group:
+          name: dataonline
+          gid: 148
+- name: Add group group-coin
+  become: true
+  group:
+          name: group-coin
+          gid: 20118
+- name: Add group bhuvan
+  become: true
+  group:
+          name: bhuvan
+          gid: 54105
+- name: Add group shiny
+  become: true
+  group:
+          name: shiny
+          gid: 997
+- name: Add group py-admin
+  become: true
+  group:
+          name: py-admin
+          gid: 54111
+- name: Add group vntr
+  become: true
+  group:
+          name: vntr
+          gid: 1026
+- name: Add group derek
+  become: true
+  group:
+          name: derek
+          gid: 1007
+- name: Add group hoang
+  become: true
+  group:
+          name: hoang
+          gid: 1008
+- name: Add group devika
+  become: true
+  group:
+          name: devika
+          gid: 1011
+- name: Add group haojing
+  become: true
+  group:
+          name: haojing
+          gid: 1012
+- name: Add group lcoin
+  become: true
+  group:
+          name: lcoin
+          gid: 1016
+- name: Add group chenxi
+  become: true
+  group:
+          name: chenxi
+          gid: 1018
+- name: Add group miranda
+  become: true
+  group:
+          name: miranda
+          gid: 1021
+- name: Add group sonnguyen
+  become: true
+  group:
+          name: sonnguyen
+          gid: 1022
+- name: Add group arnold
+  become: true
+  group:
+          name: arnold
+          gid: 1023
+- name: Add group noelle
+  become: true
+  group:
+          name: noelle
+          gid: 54106
+- name: Add group sooyeong
+  become: true
+  group:
+          name: sooyeong
+          gid: 54113
+- name: Add group teng
+  become: true
+  group:
+          name: teng
+          gid: 1027
+- name: Add group tania
+  become: true
+  group:
+          name: tania
+          gid: 54115
+- name: Add group chad
+  become: true
+  group:
+          name: chad
+          gid: 54116
+- name: Add group valentine
+  become: true
+  group:
+          name: valentine
+          gid: 54127
+- name: Add group jie
+  become: true
+  group:
+          name: jie
+          gid: 54128
+- name: Add group larry
+  become: true
+  group:
+          name: larry
+          gid: 54129
+- name: Add group yashaswini
+  become: true
+  group:
+          name: yashaswini
+          gid: 54130
+- name: Add group jacob
+  become: true
+  group:
+          name: jacob
+          gid: 54131
+- name: Add group anggia
+  become: true
+  group:
+          name: anggia
+          gid: 54114
+- name: Add group jumana
+  become: true
+  group:
+          name: jumana
+          gid: 54117
+- name: Add group smrtanalysis
+  become: true
+  group:
+          name: smrtanalysis
+          gid: 54102
+

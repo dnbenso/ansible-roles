@@ -1,0 +1,241 @@
+---
+# file roles/accounts/tasks/users.yml
+- name: Add user derek
+  become: true
+  user:
+          name: derek
+          comment: Derek Benson
+          uid: 1007
+          group: derek
+          groups: dataonline
+          password: $6$QGKkEKOz$.O7unf7kwdcl6q/OJDVSMLY9MXkC9mzAOti5ZdMNIeuAOi7H91KrIPC0pVcpHnZYPJcuBLBxz7tU/qmDdXvRy1
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user hoang
+  become: true
+  user:
+          name: hoang
+          comment: Hoang Anh Nguyen
+          uid: 1008
+          group: hoang
+          groups: dataonline,shiny
+          password: $6$FW4VnZ9P$xyz3QfEPjBh.JL1arC3blW3GHQKeLAhtQ2M.rRcY.yqIzE9wpTk7RSefvZVgg5pLOtn5DhYL6VkgaJxOVd0zh/
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user devika
+  become: true
+  user:
+          name: devika
+          comment: Devika Ganesamoorthy
+          uid: 1011
+          group: devika
+          groups: dataonline,shiny,vntr
+          password: $6$aZA9ezLz$nZLvrgcdePh6OIQaBNXGWNhxEg/kuB7c2sKTRaFMhC6BKTkwXNy3bppw/4f1wK1EfF5aU.p.8NYv9ul8DVH.P0
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user haojing
+  become: true
+  user:
+          name: haojing
+          comment: Haojing Shao
+          uid: 1012
+          group: haojing
+          groups: dataonline,shiny,sf-admin,py-admin
+          password: $6$96hYOEVB$6RGWpyXsTxdqS.v7dCrGk10dL5WVdIG.lwLpBcKhE7bjFlfa7BQZu3m59SsRm5QhVlhL6BE4xg8NemN1YvoHG1
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user lcoin
+  become: true
+  user:
+          name: lcoin
+          comment: Lachlan Coin
+          uid: 1016
+          group: lcoin
+          groups: dataonline,shiny,sf-admin,py-admin,group-coin
+          password: $6$Dpcv7Lf7$hmbyHZoT3w7Vs6U58cY6rsvkDoNy6WySuBXudczN.N/1791.vMjo0vUagw/1sYHEeP02.lkuv.eV5WP16JObi1
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user chenxi
+  become: true
+  user:
+          name: chenxi
+          comment: Chenxi Zhou
+          uid: 1018
+          group: chenxi
+          groups: dataonline,shiny,sf-admin,py-admin,vntr
+          password: $6$kax/epxl$PbmpT8FWkQpsWqa044Cv8NpgYMd7v3jOBAK1h7RI8QOY8rGkMUSltRW7iPdKNmED9bmbX7It1mWrmnpvQoA691
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user miranda
+  become: true
+  user:
+          name: miranda
+          comment: Miranda Pitt
+          uid: 1021
+          group: miranda
+          groups: dataonline,shiny,py-admin
+          password: $6$nwqyxhhu$b5UVMYhKN6r/NerKW1SpZH7BxwBXEuzkZewQcRyBQ9IXesHQOc3GBeSk54hlY0KUhd.lE63XiwC21apvnqLp5/
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user sonnguyen
+  become: true
+  user:
+          name: sonnguyen
+          comment: Son Hoang Nguyen
+          uid: 1022
+          group: sonnguyen
+          groups: dataonline,shiny,sf-admin,py-admin
+          password: $6$lzy8MFkg$r1a64yx4V2sypn2ZPOzo45k4QUBBUX83HpqUKH5IAH2WHF2AJJj9CKhOVHpUUdteTn//I52beA43P8fIYwoQu1
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user arnold
+  become: true
+  user:
+          name: arnold
+          comment: Arnold Bainomugisa
+          uid: 1023
+          group: arnold
+          groups: dataonline,shiny,py-admin,group-coin
+          password: $6$cpsyGn8h$A9k.EFxlB3Ll0kPkxZJnJwUyVtjP8wTQT/ypMtekPdEcLZ3qjB8whTWDm0cJBxyhU/swGm5v8Ry4n0ZauxLoP.
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user noelle
+  become: true
+  user:
+          name: noelle
+          comment: Noelle Barkley
+          uid: 54106
+          group: noelle
+          password: $6$EK3Ez6tM$eRf/str/G4YYMAgmT4Y4gtASYwpC/g4jaOUC8cRGpHnL.48BxxNghF1QVEXTZ2m9EekA4nIONGFcFVIZTc8de1
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user sooyeong
+  become: true
+  user:
+          name: sooyeong
+          comment: Soo Yeong Hwang
+          uid: 54112
+          group: sooyeong
+          groups: dataonline
+          password: $6$vrT0lUE1$ChrhZ5wQuETdDAzgdWRJWMCmrF79h6uhebty2ZhJFlqAKw1v/gkQb4aR0V3qeBtOLIq7Nbgqz8g4k0PNq2Upc.
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user teng
+  become: true
+  user:
+          name: teng
+          comment: Teng Haotian,,,
+          uid: 1028
+          group: teng
+          groups: dataonline
+          password: $6$1WDDWkuE$SE9ugwF9VZGE3eTPVxw1TcLsGUAWOTzL2lengqw/jD0H.hz8dpJxjmDPzSkihG78DNXZfH3EVR0DoejQQrOIq1
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user tania
+  become: true
+  user:
+          name: tania
+          comment: Tania Da Silva Duarte
+          uid: 54114
+          group: tania
+          groups: dataonline
+          password: $6$ytMoS/3e$nF9uINIp0VhwC./MvYq3H.8hp50QTSjOfFjXPEuiXvOcCeWXhDICjNRQkYJCDL0oJFpz6/j61UJ0rTLrkc1I60
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user chad
+  become: true
+  user:
+          name: chad
+          comment: Chad
+          uid: 54115
+          group: chad
+          groups: dataonline
+          password: $6$mD2I5qvT$45La./MTA8VNd2nNMLbj6qhNO2JYgXaZrQWXu6as2DwlH5woHUojHXDj47vft0LPGjOTrCytdnh9LFJ5.Mqwn/
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user valentine
+  become: true
+  user:
+          name: valentine
+          comment: Valentine Marie Renee Murigneux
+          uid: 54126
+          group: valentine
+          groups: dataonline
+          password: $6$fuUvF1a1$YlmMdxUdUt7CF3B08dTtWMNmPrVxVvQEyV/2Lu2Y79lzg9OiXtXWQQl6qfNumuPOX2lW/9/zXJDv3Mx80ahIU0
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user jie
+  become: true
+  user:
+          name: jie
+          comment: Jie Lie
+          uid: 54127
+          group: jie
+          groups: dataonline
+          password: $6$MJFDGAVY$9W//ERhfddNh5SZlyBfmLBXD84f8rrtbLmOowJedwi/YEJSFmanqtKxARINNqjJ8T9dc1s.vEkezrPbB2kOWG.
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user larry
+  become: true
+  user:
+          name: larry
+          comment: Larry Cai
+          uid: 54128
+          group: larry
+          groups: dataonline
+          password: $6$N4AdmIpH$vm.qtLJjFpDfpZ10lXWGgkB7JwumjHDv8Gq7ID9fy7a2EgVpmIYW6sKUBVO5aw71Bp/azPCeRLX.1xChW6vRd0
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user yashaswini
+  become: true
+  user:
+          name: yashaswini
+          comment: Yashaswini Janardhanan
+          uid: 54129
+          group: yashaswini
+          groups: dataonline
+          password: $6$p51yj3Xt$62umYeZXfw9cXT.MG8AMEB3WvVNHN2bapiaGeqXkHwFts7Cmnie6aq/fS08HfqsJhhfl6VAKpCxkYY35rIFh31
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user jacob
+  become: true
+  user:
+          name: jacob
+          comment: Jacob
+          uid: 54130
+          group: jacob
+          groups: dataonline
+          password: $6$LcUEyRRV$lBkdxP5.CSHPyazMdKUldh01bmYIMH2Q31rxmTtWpOF5vcYoH49qdkSyw6tq.pC5CE5d0Didgp.TzveH9vXwf.
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user anggia
+  become: true
+  user:
+          name: anggia
+          comment: Anggia Prasetyoputri
+          uid: 54113
+          group: anggia
+          groups: dataonline
+          password: $6$ZXsugmrv$7hD3ytHm6IrSEij6l/ojgakhUY7kMzj2nx4HptCWW7D.2UP3xr7h8.nirlhEiNno8zS9OxFONwBu4m2EraDlW.
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user Jumana Yousef
+  become: true
+  user:
+          name: jumana
+          comment: Jumana Yousef
+          uid: 54117
+          group: jumana
+          groups: dataonline
+          password: $6$lryXMzhox3JQubE6$sN19pYCWKdf1WN7NxaUKkGl9WX7GmWgpu8ncL/pbMfxLunYxGcmGxVKpK.fEaNcawjLfA0Z1jIRTgqwUOELpQ/
+          update_password: on_create
+          shell: /bin/bash
+- name: Add user smrtanalysis
+  become: true
+  user:
+          name: smrtanalysis
+          comment: SMRT Analysis Owner
+          uid: 54102
+          group: smrtanalysis
+          home: /mnt/galaxy/home/smrtanalysis
+          shell: /bin/bash

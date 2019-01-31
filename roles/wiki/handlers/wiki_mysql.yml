@@ -1,0 +1,18 @@
+---
+# file roles/wiki/handlers/wiki_mysql.yml
+- name: Drop database gdd_wiki
+  become: true
+  mysql_db:
+          name: "{{ mysql_wiki_db }}"
+          state: absent
+- name: Create database gdd_wiki
+  become: true
+  mysql_db:
+          name: "{{ mysql_wiki_db }}"
+          state: present
+- name: Restore database gdd_wiki
+  become: true
+  mysql_db:
+          name: "{{ mysql_wiki_db }}"
+          state: import
+          target: /root/gdd_wiki.sql
